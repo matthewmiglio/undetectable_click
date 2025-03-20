@@ -4,11 +4,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <thread>
+#include "MouseEngine.h"
 
-extern "C" {
-    __declspec(dllexport) void move_mouse_humanlike(int x, int y, double randomness, double speed);
-    __declspec(dllexport) void click_mouse(bool left_button, int delay_ms);
-}
 
 // Helper function to add jitter
 int random_jitter(int value, double randomness) {
@@ -52,4 +49,32 @@ void click_mouse(bool left_button, int delay_ms) {
 
     input.mi.dwFlags = left_button ? MOUSEEVENTF_LEFTUP : MOUSEEVENTF_RIGHTUP;
     SendInput(1, &input, sizeof(INPUT));
+}
+
+
+void send_key_event(WORD key_code, DWORD flags) {
+    INPUT input = {0};
+    input.type = INPUT_KEYBOARD;
+    input.ki.wVk = key_code;
+    input.ki.dwFlags = flags;
+    SendInput(1, &input, sizeof(INPUT));
+}
+
+extern "C" void press_key(WORD key_code, int delay_ms) {
+    send_key_event(key_code, 0); // key down
+    Sleep(delay_ms);
+    send_key_event(key_code, KEYEVENTF_KEYUP); // key up
+}
+
+extern "C" void press_key_combo(WORD* key_codes, int count, int delay_between_keys) {
+    // Press keys down
+    for (int i = 0; i < count; i++) {
+        send_key_event(key_codes[i], 0);
+        Sleep(delay_between_keys);
+    }
+    // Release keys in reverse order
+    for (int i = count - 1; i >= 0; i--) {
+        send_key_event(key_codes[i], KEYEVENTF_KEYUP);
+        Sleep(delay_between_keys);
+    }
 }

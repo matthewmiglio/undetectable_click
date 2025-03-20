@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{99dda46c-1d27-45cc-89bf-1087a94339b6}</ProjectGuid>
+    <ProjectGuid>{d620e982-c5fe-4b98-95d3-f5e778a02ff7}</ProjectGuid>
     <RootNamespace>MouseEngine</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -112,13 +112,12 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <ModuleDefinitionFile>H:\my_files\my_programs\undetectable_click\mouse_engine\MouseEngine\MouseEngine.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>MouseEngine.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -141,9 +140,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\framework.h" />
-    <ClInclude Include="..\MouseEngine.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="MouseEngine.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>

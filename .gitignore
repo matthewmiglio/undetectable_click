@@ -1,6 +1,7 @@
 # Python
 __pycache__/
 *.pyc
+prompt.py
 
 # Visual Studio
 .vs/
@@ -23,7 +24,6 @@ __pycache__/
 
 # Build outputs
 *.exe
-*.dll
 *.lib
 *.exp
 

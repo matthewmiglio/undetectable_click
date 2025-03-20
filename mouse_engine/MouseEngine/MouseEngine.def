@@ -2,3 +2,5 @@ LIBRARY MouseEngine
 EXPORTS
     move_mouse_humanlike
     click_mouse
+    press_key
+    press_key_combo
