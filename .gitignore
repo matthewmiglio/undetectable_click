@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.obj
+*.pdb
+*.log
+*.tlog
+*.idb
+*.ipch
+*.aps
+*.ilk
+*.iobj
+*.ipdb
+*.suo
+*.cache
+*.db
+*.sdf
+*.opensdf
+
+# Build outputs
+*.exe
+*.dll
+*.lib
+*.exp
+
+# Debug / Release folders
+**/Debug/
+**/Release/
+
+# Other
+*.bak
+*.tmp
+*.vscode/
