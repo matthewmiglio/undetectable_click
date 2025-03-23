@@ -13,30 +13,42 @@ mouse_engine.move_mouse_humanlike.argtypes = [
     ctypes.c_int,
     ctypes.c_double,
     ctypes.c_double,
+    ctypes.c_double,
+    ctypes.c_double,
+    ctypes.c_int,
+    ctypes.c_double,
+    ctypes.c_double,
+    ctypes.c_double,
 ]
+
+
 mouse_engine.click_mouse.argtypes = [ctypes.c_bool, ctypes.c_int]
 
 
-def move_humanlike(x, y, randomness=0.5, speed=0.3):
-    """
-    Move the mouse cursor to a target (x, y) position with human-like randomness and smooth motion.
-
-    Args:
-        x (int): The target X-coordinate on the screen.
-        y (int): The target Y-coordinate on the screen.
-        randomness (float, optional):
-            Controls jitter and imperfect movement paths.
-            Higher values introduce more randomness (typical range: 0.1 to 1.0).
-            Default is 0.5.
-        speed (float, optional):
-            Controls movement speed.
-            Lower values move slower (e.g., 0.2 = slow, 1.0 = fast).
-            Default is 0.3.
-
-    Example:
-        move_humanlike(800, 400, randomness=0.6, speed=0.4)
-    """
-    mouse_engine.move_mouse_humanlike(x, y, randomness, speed)
+def move_humanlike(
+    x,
+    y,
+    base_randomness=0.5,
+    base_speed=0.3,
+    randomness_gradient=0.1,
+    speed_gradient=0.1,
+    curve_count=3,
+    curve_severity=0.5,
+    curve_severity_randomness=0.2,
+    curve_time_randomness=0.1,
+):
+    mouse_engine.move_mouse_humanlike(
+        x,
+        y,
+        base_randomness,
+        base_speed,
+        randomness_gradient,
+        speed_gradient,
+        curve_count,
+        curve_severity,
+        curve_severity_randomness,
+        curve_time_randomness,
+    )
 
 
 def click(left=True, delay=50):
